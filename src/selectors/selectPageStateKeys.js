@@ -3,7 +3,7 @@ const memoize = fn => {
   let value;
 
   return state => {
-    if (!key === state) {
+    if (key !== state) {
       key = state;
       value = fn(state);
     }
