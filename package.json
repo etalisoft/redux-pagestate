@@ -1,0 +1,92 @@
+{
+  "name": "redux-pagestate",
+  "version": "0.0.0",
+  "description": "A higher order component decorator for page state using Redux and React",
+  "main": "./lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jason-whitted/redux-pagestate"
+  },
+  "scripts": {
+    "build": "npm run build:lib && npm run build:es && npm run build:umd && npm run build:umd:min",
+    "build:lib": "babel src --out-dir lib --ignore __tests__",
+    "build:es": "cross-env BABEL_ENV=es babel src --out-dir es --ignore __tests__",
+    "build:umd": "cross-env NODE_ENV=development webpack src/index.js dist/redux-pagestate.js",
+    "build:umd:min": "cross-env NODE_ENV=production webpack src/index.js dist/redux-pagestate.min.js",
+    "clean": "rimraf dist lib es",
+    "lint": "eslint src",
+    "format": "prettier-eslint \"+(src|examples)/**/*.js\" --ignore \"**/bundle.js\" --write --no-semi --single-quote --trailingComma=none",
+    "prepublish": "npm run test && npm run clean && npm run build",
+    "test": "mocha --compilers js:babel-register --recursive --recursive \"src/**/__tests__/*\" --require src/__tests__/setup.js",
+    "test:watch": "npm test -- --watch",
+    "test:cov": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text npm test",
+    "test:codecov": "cat ./coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js"
+  },
+  "keywords": ["react", "reactjs", "redux", "react-redux", "pagestate"],
+  "author": "Jason Whitted <jason.whitted@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jason-whitted/redux-pagestate/issues"
+  },
+  "homepage": "https://github.com/jason-whitted/redux-pagestate#readme",
+  "dependencies": {
+    "es6-error": "^4.0.0",
+    "hoist-non-react-statics": "^1.2.0",
+    "invariant": "^2.2.2",
+    "prop-types": "^15.5.9"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.25.0",
+    "babel-eslint": "^7.2.2",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-istanbul": "^4.1.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+    "babel-preset-es2015-no-commonjs": "^0.0.2",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "codecov.io": "^0.1.6",
+    "cross-env": "^5.0.1",
+    "eslint": "^3.17.1",
+    "eslint-config-react-app": "^1.0.4",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^5.0.3",
+    "eslint-plugin-react": "^7.0.0",
+    "expect": "^1.20.2",
+    "expect-element": "^1.1.1",
+    "expect-predicate": "^1.0.0",
+    "flux-standard-action": "^1.0.0",
+    "jsdom": "^11.0.0",
+    "mocha": "^3.2.0",
+    "nyc": "^11.0.2",
+    "prettier": "^1.4.4",
+    "prettier-eslint-cli": "^4.1.0",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-redux": "^5.0.4",
+    "redux": "^3.6.0",
+    "rifraf": "^2.0.3",
+    "rimraf": "^2.5.4",
+    "webpack": "^2.5.1",
+    "webpack-bundle-analyzer": "^2.7.0"
+  },
+  "peerDependencies": {
+    "react": "^15.0.0",
+    "react-redux": "^4.3.0 || ^5.0.0",
+    "redux": "^3.0.0"
+  },
+  "files": ["README.md", "es", "lib", "dist"],
+  "nyc": {
+    "include": ["src/**/*.js"],
+    "sourceMap": false,
+    "instrument": false
+  },
+  "npmName": "redux-pagestate",
+  "npmFileMap": [
+    {
+      "basePath": "/dist/",
+      "files": ["*.js"]
+    }
+  ]
+}
