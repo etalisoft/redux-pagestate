@@ -1,7 +1,4 @@
-import behaviors from './reducerBehaviors';
-import initialState from './initialState';
+import createReducer from './createReducer';
+import matchers from './matchers';
 
-export default (state = initialState, action) => {
-  const behavior = action && action.type && behaviors[action.type];
-  return behavior ? behavior(state, action) : state;
-};
+export default createReducer({ matchers });

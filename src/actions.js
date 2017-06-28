@@ -1,4 +1,12 @@
-import { INITIALIZE, REMOVE, SET } from './actionTypes';
+import { CHANGE_PATH, INITIALIZE, REMOVE, SET } from './actionTypes';
+
+export const changePath = ({ path = window.location.pathname, matcher = 'equal' } = {}) => ({
+  type: CHANGE_PATH,
+  payload: {
+    path,
+    matcher,
+  },
+});
 
 export const initialize = ({ key, value, paths }) => ({
   type: INITIALIZE,

@@ -4,5 +4,7 @@ export const { initialize, remove, set } = _actions;
 export * from './actionTypes';
 export * from './selectors';
 export { default as initialState } from './initialState';
+export { default as matchers } from './matchers';
+export { default as createReducer } from './createReducer';
 export { default as reducer } from './reducer';
 export { default as withPageState } from './withPageState';
