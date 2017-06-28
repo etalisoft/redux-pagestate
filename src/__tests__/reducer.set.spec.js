@@ -91,4 +91,23 @@ describe('reducer set', () => {
       },
     });
   });
+
+  it('should return the original state if the value and paths are unchanged', () => {
+    const state = {
+      a: {
+        value: 'A',
+        paths: ['/a'],
+      },
+      b: {
+        value: 'B',
+        paths: ['/b'],
+      },
+    };
+    const action = set({
+      key: 'a',
+      value: 'A',
+      paths: ['/a'],
+    });
+    expect(reducer(state, action)).toBe(state);
+  });
 });

@@ -19,4 +19,22 @@ describe('selectPageStateKeys', () => {
       }),
     ).toMatch(['a', 'b']);
   });
+
+  it('should be memoized', () => {
+    const state = {
+      pagestate: {
+        a: {
+          value: 'A',
+          paths: ['/a'],
+        },
+        b: {
+          value: 'B',
+          paths: ['/b'],
+        },
+      },
+    };
+    const first = selectPageStateKeys(state);
+    const second = selectPageStateKeys(state);
+    expect(first).toBe(second);
+  });
 });

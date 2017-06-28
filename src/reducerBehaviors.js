@@ -1,6 +1,8 @@
 import { INITIALIZE, REMOVE, SET } from './actionTypes';
 
-const changed = (state, key, value, paths) => state[key].value !== value || (paths && state[key].paths !== paths);
+const changed = (state, key, value, paths) => {
+  return state[key].value !== value || (paths && state[key].paths.join() !== paths.join());
+};
 
 const behaviors = {
   [INITIALIZE](state, { payload: { key, value, paths } }) {
@@ -31,6 +33,7 @@ const behaviors = {
     }
 
     if (changed(state, key, value, paths)) {
+      console.log('CHANGED');
       return {
         ...state,
         [key]: {
@@ -41,6 +44,7 @@ const behaviors = {
       };
     }
 
+    console.log('RETURN ORIGINAL');
     return state;
   },
 };
