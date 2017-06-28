@@ -5,7 +5,7 @@
   "main": "./lib/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jason-whitted/redux-pagestate"
+    "url": "https://github.com/etalisoft/redux-pagestate"
   },
   "scripts": {
     "build": "npm run build:lib && npm run build:es && npm run build:umd && npm run build:umd:min",
@@ -23,12 +23,12 @@
     "test:codecov": "cat ./coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js"
   },
   "keywords": ["react", "reactjs", "redux", "react-redux", "pagestate"],
-  "author": "Jason Whitted <jason.whitted@gmail.com>",
+  "author": "Jason Whitted <etalisoft@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jason-whitted/redux-pagestate/issues"
+    "url": "https://github.com/etalisoft/redux-pagestate/issues"
   },
-  "homepage": "https://github.com/jason-whitted/redux-pagestate#readme",
+  "homepage": "https://github.com/etalisoft/redux-pagestate#readme",
   "dependencies": {
     "es6-error": "^4.0.0",
     "hoist-non-react-statics": "^1.2.0",
