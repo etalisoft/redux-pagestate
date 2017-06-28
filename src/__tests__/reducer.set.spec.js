@@ -3,7 +3,7 @@ import expect from 'expect';
 import reducer from '../reducer';
 import { set } from '../actions';
 
-describe.only('reducer set', () => {
+describe('reducer set', () => {
   let pathname;
 
   beforeEach(() => {

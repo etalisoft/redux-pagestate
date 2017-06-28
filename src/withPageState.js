@@ -9,6 +9,11 @@ const withPageState = ({ key, value, paths, removeOnUnmount = false }) => BaseCo
   class WithPageState extends Component {
     componentWillMount() {
       this.props.initialize({ key, value, paths });
+      this.setHandler = v => this.props.set({ key, value: v });
+    }
+
+    componentDidMount() {
+      this.mounted = true;
     }
 
     componentWillUnmount() {
@@ -19,23 +24,23 @@ const withPageState = ({ key, value, paths, removeOnUnmount = false }) => BaseCo
 
     getChildContextTypes() {
       return {
-        pageState: this.props.pageState,
+        pageState: this.mounted ? this.props.pageState : value,
         pageStateKey: key,
-        setPageState: this.props.setPageState,
+        setPageState: this.setHandler,
       };
     }
 
     render() {
-      const { pageState, initializePageState, removePageState, setPageState, ...other } = this.props;
-      return <BaseComponent {...this.context} {...other} />;
+      const { pageState, initialize, remove, set, ...other } = this.props;
+      return <BaseComponent {...this.getChildContextTypes()} {...other} />;
     }
   }
 
   WithPageState.propTypes = {
     pageState: PropTypes.any,
-    initializePageState: PropTypes.func,
-    removePageState: PropTypes.func,
-    setPageState: PropTypes.func,
+    initialize: PropTypes.func,
+    remove: PropTypes.func,
+    set: PropTypes.func,
   };
 
   WithPageState.childContextTypes = {
@@ -49,10 +54,12 @@ const withPageState = ({ key, value, paths, removeOnUnmount = false }) => BaseCo
   });
 
   const boundActions = {
-    initializePageState: initialize,
-    removePageState: remove,
-    setPageState: set,
+    initialize,
+    remove,
+    set,
   };
 
   return connect(select, boundActions)(WithPageState);
 };
+
+export default withPageState;
