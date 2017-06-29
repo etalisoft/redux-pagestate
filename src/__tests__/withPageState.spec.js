@@ -1,12 +1,11 @@
 import expect from 'expect';
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-dom/test-utils';
 import { Provider } from 'react-redux';
 import { combineReducers, createStore } from 'redux';
 
-import { initialize, remove, set } from '../actions';
+import { set } from '../actions';
 import reducer from '../reducer';
 import withPageState from '../withPageState';
 

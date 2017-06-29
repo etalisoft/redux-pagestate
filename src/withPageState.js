@@ -3,17 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { initialize, remove, set } from './actions';
-import { selectPageState } from './selectors';
+import { selectPageState, selectPageStateKeys } from './selectors';
 
 const withPageState = ({ key, value, paths, removeOnUnmount = false }) => BaseComponent => {
   class WithPageState extends Component {
     componentWillMount() {
       this.props.initialize({ key, value, paths });
       this.setHandler = v => this.props.set({ key, value: v });
-    }
-
-    componentDidMount() {
-      this.mounted = true;
     }
 
     componentWillUnmount() {
@@ -24,20 +20,21 @@ const withPageState = ({ key, value, paths, removeOnUnmount = false }) => BaseCo
 
     getChildContextTypes() {
       return {
-        pageState: this.mounted ? this.props.pageState : value,
+        pageState: this.props.keys.some(k => k === key) ? this.props.pageState : value,
         pageStateKey: key,
         setPageState: this.setHandler,
       };
     }
 
     render() {
-      const { pageState, initialize, remove, set, ...other } = this.props;
+      const { pageState, keys, initialize, remove, set, ...other } = this.props;
       return <BaseComponent {...this.getChildContextTypes()} {...other} />;
     }
   }
 
   WithPageState.propTypes = {
     pageState: PropTypes.any,
+    keys: PropTypes.array,
     initialize: PropTypes.func,
     remove: PropTypes.func,
     set: PropTypes.func,
@@ -51,6 +48,7 @@ const withPageState = ({ key, value, paths, removeOnUnmount = false }) => BaseCo
 
   const select = state => ({
     pageState: selectPageState(key)(state),
+    keys: selectPageStateKeys(state),
   });
 
   const boundActions = {

@@ -1,6 +1,6 @@
 {
   "name": "redux-pagestate",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A higher order component decorator for page state using Redux and React",
   "main": "./lib/index.js",
   "repository": {
