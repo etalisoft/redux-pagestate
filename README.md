@@ -14,3 +14,4 @@
 You can play around with `redux-pagestate` in these sandbox versions.
 - [Simple Page](https://codesandbox.io/s/82PGR57B3)
 - [Counter Page](https://codesandbox.io/s/wjv0k93v1)
+- [Router Example](https://codesandbox.io/s/j2rX0z0qz)
