@@ -4,7 +4,8 @@
 [React](https://github.com/facebook/react) to use [Redux](https://github.com/rackt/redux) to store all of its state.
 
 ## Installation
-```npm install --save redux-pagestate```
+`npm install --save redux-pagestate`
 
 ## Documentation
-```Coming soon...```
+- [Getting Started](docs/getting-started.md)
+- [API](docs/api.md)
