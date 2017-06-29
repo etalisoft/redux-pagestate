@@ -9,3 +9,8 @@
 ## Documentation
 - [Getting Started](docs/getting-started.md)
 - [API](docs/api.md)
+
+## Code Sandboxes
+You can play around with `redux-pagestate` in these sandbox versions.
+- [Simple Page](https://codesandbox.io/s/82PGR57B3)
+- [Counter Page](https://codesandbox.io/s/wjv0k93v1)
