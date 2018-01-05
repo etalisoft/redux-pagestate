@@ -41,7 +41,7 @@ const withPageState = ({ key, value, paths, removeOnUnmount = false }) => BaseCo
   };
 
   WithPageState.childContextTypes = {
-    pageStateValue: PropTypes.any,
+    pageState: PropTypes.any,
     pageStateKey: PropTypes.string,
     setPageState: PropTypes.func,
   };
