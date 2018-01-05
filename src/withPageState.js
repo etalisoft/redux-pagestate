@@ -18,7 +18,7 @@ const withPageState = ({ key, value, paths, removeOnUnmount = false }) => BaseCo
       }
     }
 
-    getChildContextTypes() {
+    getChildContext() {
       return {
         pageState: this.props.keys.some(k => k === key) ? this.props.pageState : value,
         pageStateKey: key,
@@ -28,7 +28,7 @@ const withPageState = ({ key, value, paths, removeOnUnmount = false }) => BaseCo
 
     render() {
       const { pageState, keys, initialize, remove, set, ...other } = this.props;
-      return <BaseComponent {...this.getChildContextTypes()} {...other} />;
+      return <BaseComponent {...this.getChildContext()} {...other} />;
     }
   }
 
