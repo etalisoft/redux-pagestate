@@ -1,6 +1,6 @@
 {
   "name": "redux-pagestate",
-  "version": "0.0.5",
+  "version": "1.0.0",
   "description": "A higher order component decorator for page state using Redux and React",
   "main": "./lib/index.js",
   "repository": {
@@ -15,9 +15,11 @@
     "build:umd:min": "cross-env NODE_ENV=production webpack src/index.js dist/redux-pagestate.min.js",
     "clean": "rimraf dist lib es",
     "lint": "eslint src",
-    "format": "prettier-eslint \"+(src|examples)/**/*.js\" --ignore \"**/bundle.js\" --write --no-semi --single-quote --trailingComma=none",
+    "format":
+      "prettier-eslint \"+(src|examples)/**/*.js\" --ignore \"**/bundle.js\" --write --no-semi --single-quote --trailingComma=none",
     "prepublish": "npm run test && npm run clean && npm run build",
-    "test": "mocha --compilers js:babel-register --recursive --recursive \"src/**/__tests__/*\" --require src/__tests__/setup.js",
+    "test":
+      "mocha --compilers js:babel-register --recursive --recursive \"src/**/__tests__/*\" --require src/__tests__/setup.js",
     "test:watch": "npm test -- --watch",
     "test:cov": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text npm test",
     "test:codecov": "cat ./coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js"
@@ -33,7 +35,7 @@
     "es6-error": "^4.0.0",
     "hoist-non-react-statics": "^1.2.0",
     "invariant": "^2.2.2",
-    "prop-types": "^15.5.9"
+    "prop-types": "^15.6.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -63,9 +65,9 @@
     "nyc": "^11.0.2",
     "prettier": "^1.4.4",
     "prettier-eslint-cli": "^4.1.0",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "react-redux": "^5.0.4",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
     "redux": "^3.6.0",
     "rifraf": "^2.0.3",
     "rimraf": "^2.5.4",
@@ -73,9 +75,9 @@
     "webpack-bundle-analyzer": "^2.7.0"
   },
   "peerDependencies": {
-    "react": "^15.0.0",
-    "react-redux": "^4.3.0 || ^5.0.0",
-    "redux": "^3.0.0"
+    "react": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "redux": "^3.6.0"
   },
   "files": ["README.md", "es", "lib", "dist"],
   "nyc": {
